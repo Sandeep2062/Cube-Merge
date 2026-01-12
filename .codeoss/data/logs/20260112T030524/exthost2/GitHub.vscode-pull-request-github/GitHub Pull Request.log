@@ -1,0 +1,119 @@
+2026-01-12 03:21:21.881 [warning] /home/sandeepkhadka9090/.ssh/config: ENOENT: no such file or directory, open '/home/sandeepkhadka9090/.ssh/config'
+2026-01-12 03:21:21.881 [info] [Activation] Extension version: 0.118.2
+2026-01-12 03:21:23.579 [info] [Activation] Looking for git repository
+2026-01-12 03:21:23.579 [info] [Activation] Found 0 repositories during activation
+2026-01-12 03:21:23.579 [info] [Activation] Git repository found, initializing review manager and pr tree view.
+2026-01-12 03:21:23.580 [info] [GitAPI] Registering git provider
+2026-01-12 03:36:57.634 [info] [GitAPI] Repository file:///home/sandeepkhadka9090 has been opened
+2026-01-12 03:36:57.634 [info] [Review+0] Validate state in progress
+2026-01-12 03:36:57.634 [info] [Review+0] Validating state...
+2026-01-12 03:36:57.648 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:36:57.650 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:36:57.658 [info] [FolderRepositoryManager+0] Trying to use globalState for assignableUsers.
+2026-01-12 03:36:57.956 [info] [FolderRepositoryManager+0] GlobalState does not exist for assignableUsers.
+2026-01-12 03:36:58.461 [info] [Review+0] Queuing additional validate state
+2026-01-12 03:36:58.461 [info] [Activation] Repo state for file:///home/sandeepkhadka9090 changed.
+2026-01-12 03:36:58.461 [info] [Activation] Repo file:///home/sandeepkhadka9090 has already been setup.
+2026-01-12 03:37:04.693 [info] [Review+0] Validating state...
+2026-01-12 03:37:04.694 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:37:04.694 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:37:04.694 [info] [FolderRepositoryManager+0] Using in-memory cached assignable users.
+2026-01-12 03:37:04.814 [info] [Review+0] No matching pull request metadata found locally for current branch master
+2026-01-12 03:37:04.846 [info] [Review+0] No matching pull request metadata found on GitHub for current branch master
+2026-01-12 03:38:23.663 [info] [RepositoriesManager] Enterprise login selected, but no possible enterprise remotes discovered (0 .com)
+2026-01-12 03:39:49.340 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:49.349 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:49.351 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:49.352 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:49.353 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:49.355 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:49.356 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:51.798 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:39:51.798 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:39:51.798 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:39:51.798 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:39:51.798 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:39:51.798 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:39:51.798 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:39:51.798 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:39:51.799 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:39:51.799 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:39:51.799 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:39:51.799 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:39:51.799 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:39:51.799 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:39:52.038 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:52.039 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:52.041 [info] [Authentication] Creating hub for .com
+2026-01-12 03:39:52.043 [info] [Authentication] Creating hub for .com
+2026-01-12 03:41:28.882 [info] [Review+0] Validate state in progress
+2026-01-12 03:41:28.882 [info] [Review+0] Validating state...
+2026-01-12 03:41:28.887 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:41:28.887 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:41:29.071 [info] [Review+0] No matching pull request metadata found locally for current branch master
+2026-01-12 03:41:29.141 [info] [Review+0] No matching pull request metadata found on GitHub for current branch master
+2026-01-12 03:41:51.413 [info] [Review+0] Validate state in progress
+2026-01-12 03:41:51.413 [info] [Review+0] Validating state...
+2026-01-12 03:41:51.566 [info] [FolderRepositoryManager+0] Found GitHub remote for folder /home/sandeepkhadka9090
+2026-01-12 03:41:52.201 [info] [FolderRepositoryManager+0] Trying to use globalState for assignableUsers.
+2026-01-12 03:41:53.084 [info] [Review+0] No matching pull request metadata found locally for current branch master
+2026-01-12 03:41:53.119 [info] [Review+0] No matching pull request metadata found on GitHub for current branch master
+2026-01-12 03:41:53.212 [info] [FolderRepositoryManager+0] GlobalState does not exist for assignableUsers.
+2026-01-12 03:41:53.787 [info] [FolderRepositoryManager+0] Using in-memory cached assignable users.
+2026-01-12 03:43:54.123 [error] [FolderRepositoryManager+0] Fetching pull request with query failed: HttpError: Validation Failed: {"message":"The listed users and repositories cannot be searched either because the resources do not exist or you do not have permission to view them.","resource":"Search","field":"q","code":"invalid"} - https://docs.github.com/v3/search/
+2026-01-12 03:45:23.601 [info] [GitAPI] Repository file:///home/sandeepkhadka9090 has been opened
+2026-01-12 03:45:23.601 [info] [Review+1] Validate state in progress
+2026-01-12 03:45:23.601 [info] [Review+1] Validating state...
+2026-01-12 03:45:23.604 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:45:23.604 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:45:24.516 [info] [Review+1] Queuing additional validate state
+2026-01-12 03:45:24.516 [info] [Activation] Repo state for file:///home/sandeepkhadka9090 changed.
+2026-01-12 03:45:24.516 [info] [Activation] Repo file:///home/sandeepkhadka9090 has already been setup.
+2026-01-12 03:45:29.808 [info] [Review+1] Validating state...
+2026-01-12 03:45:29.813 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:45:29.813 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:45:29.883 [info] [Review+1] No matching pull request metadata found locally for current branch master
+2026-01-12 03:45:29.911 [info] [Review+1] No matching pull request metadata found on GitHub for current branch master
+2026-01-12 03:45:45.981 [info] [Review+1] Validate state in progress
+2026-01-12 03:45:45.981 [info] [Review+1] Validating state...
+2026-01-12 03:45:46.017 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:45:46.018 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:45:47.100 [info] [Review+1] No matching pull request metadata found locally for current branch main
+2026-01-12 03:45:47.217 [info] [Review+1] No matching pull request metadata found on GitHub for current branch main
+2026-01-12 03:46:13.420 [info] [Review+1] Validate state in progress
+2026-01-12 03:46:13.420 [info] [Review+1] Validating state...
+2026-01-12 03:46:13.424 [warning] No remotes found. The following remotes are missing: origin, upstream
+2026-01-12 03:46:13.424 [info] [FolderRepositoryManager+0] No GitHub remotes found for folder /home/sandeepkhadka9090
+2026-01-12 03:46:16.135 [info] [Review+1] No matching pull request metadata found locally for current branch main
+2026-01-12 03:46:16.257 [info] [Review+1] No matching pull request metadata found on GitHub for current branch main
+2026-01-12 03:46:49.858 [info] [Review+1] Validate state in progress
+2026-01-12 03:46:49.858 [info] [Review+1] Validating state...
+2026-01-12 03:46:52.431 [info] [FolderRepositoryManager+0] Found GitHub remote for folder /home/sandeepkhadka9090
+2026-01-12 03:46:53.830 [info] [FolderRepositoryManager+0] Trying to use globalState for assignableUsers.
+2026-01-12 03:46:53.870 [info] [Review+1] No matching pull request metadata found locally for current branch main
+2026-01-12 03:46:53.896 [info] [Review+1] No matching pull request metadata found on GitHub for current branch main
+2026-01-12 03:46:55.149 [info] [Review+1] Queuing additional validate state
+2026-01-12 03:47:00.203 [info] [FolderRepositoryManager+0] No globalState for assignableUsers.
+2026-01-12 03:47:00.493 [info] [Review+1] Validating state...
+2026-01-12 03:47:00.667 [info] [FolderRepositoryManager+0] Found GitHub remote for folder /home/sandeepkhadka9090
+2026-01-12 03:47:00.756 [info] [FolderRepositoryManager+0] Using in-memory cached assignable users.
+2026-01-12 03:47:01.646 [info] [FolderRepositoryManager+0] Using in-memory cached assignable users.
+2026-01-12 03:47:01.667 [info] [Review+1] No matching pull request metadata found locally for current branch main
+2026-01-12 03:47:02.173 [info] [Review+1] No matching pull request metadata found on GitHub for current branch main
+2026-01-12 03:50:21.320 [info] [GitHubRepository+0.1] Fetch branch main - enter
+2026-01-12 03:50:23.744 [info] [GitHubRepository+0.1] Fetch branch main - done: true
+2026-01-12 03:50:30.125 [error] [GitHubRepository+0.1] Error querying GraphQL API (PullRequestTemplates): GraphQL error: Could not resolve to a Repository with the name 'Sandeep2062/.github'.. 
+2026-01-12 03:50:30.127 [info] [CreatePullRequestViewProvider] Initializing "create" view: {"canModifyBranches":true,"defaultBaseRemote":{"owner":"Sandeep2062","repositoryName":"Cube-Merge"},"defaultBaseBranch":"main","defaultCompareRemote":{"owner":"Sandeep2062","repositoryName":"Cube-Merge"},"defaultCompareBranch":"main","defaultTitle":"Main","defaultDescription":"","defaultMergeMethod":"merge","baseHasMergeQueue":false,"remoteCount":1,"allowAutoMerge":false,"mergeMethodsAvailability":{"merge":true,"squash":true,"rebase":true},"autoMergeDefault":false,"createError":"","labels":[],"isDraftDefault":false,"isDarkTheme":true,"creating":false,"initializeWithGeneratedTitleAndDescription":false,"preReviewState":0,"reviewing":false}
+2026-01-12 03:50:35.882 [error] [GitHubRepository+0.1] Error querying GraphQL API (PullRequestTemplates): GraphQL error: Could not resolve to a Repository with the name 'Sandeep2062/.github'.. 
+2026-01-12 03:50:36.211 [info] [CreatePullRequestViewProvider] Initializing "create" view: {"canModifyBranches":true,"defaultBaseRemote":{"owner":"Sandeep2062","repositoryName":"Cube-Merge"},"defaultBaseBranch":"main","defaultCompareRemote":{"owner":"Sandeep2062","repositoryName":"Cube-Merge"},"defaultCompareBranch":"main","defaultTitle":"Main","defaultDescription":"","defaultMergeMethod":"merge","baseHasMergeQueue":false,"remoteCount":2,"allowAutoMerge":false,"mergeMethodsAvailability":{"merge":true,"squash":true,"rebase":true},"autoMergeDefault":false,"createError":"","labels":[],"isDraftDefault":false,"isDarkTheme":true,"creating":false,"initializeWithGeneratedTitleAndDescription":false,"preReviewState":0,"reviewing":false}
+2026-01-12 03:51:04.946 [info] [GitHubRepository+0.1] Fetch branch main - enter
+2026-01-12 03:51:05.816 [info] [GitHubRepository+0.1] Fetch branch main - done: true
+2026-01-12 03:51:06.426 [error] [GitHubRepository+0.1] Error querying GraphQL API (PullRequestTemplates): GraphQL error: Could not resolve to a Repository with the name 'Sandeep2062/.github'.. 
+2026-01-12 03:51:06.542 [info] [CreatePullRequestViewProvider] Initializing "create" view: {"canModifyBranches":true,"defaultBaseRemote":{"owner":"Sandeep2062","repositoryName":"Cube-Merge"},"defaultBaseBranch":"main","defaultCompareRemote":{"owner":"Sandeep2062","repositoryName":"Cube-Merge"},"defaultCompareBranch":"main","defaultTitle":"Main","defaultDescription":"","defaultMergeMethod":"merge","baseHasMergeQueue":false,"remoteCount":2,"allowAutoMerge":false,"mergeMethodsAvailability":{"merge":true,"squash":true,"rebase":true},"autoMergeDefault":false,"createError":"","labels":[],"isDraftDefault":false,"isDarkTheme":true,"creating":false,"initializeWithGeneratedTitleAndDescription":false,"preReviewState":0,"reviewing":false}
+2026-01-12 03:52:09.030 [info] [Authentication] Creating hub for .com
+2026-01-12 03:52:09.909 [info] [FolderRepositoryManager+0] Found GitHub remote for folder /home/sandeepkhadka9090
+2026-01-12 03:52:12.835 [error] [GitHubRepository+0.1] Error querying GraphQL API (GetOrgProjects): GraphQL error: Could not resolve to an Organization with the login of 'Sandeep2062'.. 
+2026-01-12 03:52:12.835 [error] [GitHubRepository+0.1] Unable to fetch org projects: Error: GraphQL error: Could not resolve to an Organization with the login of 'Sandeep2062'.
+2026-01-12 03:52:13.303 [info] [FolderRepositoryManager+0] Using in-memory cached assignable users.
+2026-01-12 03:52:17.619 [error] [GitHubRepository+0.2] Error querying GraphQL API (GetOrgProjects): GraphQL error: Could not resolve to an Organization with the login of 'Sandeep2062'.. 
+2026-01-12 03:52:17.620 [error] [GitHubRepository+0.2] Unable to fetch org projects: Error: GraphQL error: Could not resolve to an Organization with the login of 'Sandeep2062'.

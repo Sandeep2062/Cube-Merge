@@ -1,0 +1,25 @@
+2026-01-12 03:05:24.692 [info] 
+
+
+
+
+2026-01-12 03:05:24.715 [info] Extension host agent started.
+2026-01-12 03:05:31.180 [info] [127.0.0.1][899839c5][ManagementConnection] New connection established.
+2026-01-12 03:05:31.722 [info] [127.0.0.1][4b0f00b5][ExtensionHostConnection] New connection established.
+2026-01-12 03:05:34.455 [info] [127.0.0.1][4b0f00b5][ExtensionHostConnection] <1388> Launched Extension Host Process.
+2026-01-12 03:07:06.365 [info] [127.0.0.1][899839c5][ManagementConnection] The client has disconnected gracefully, so the connection will be disposed.
+2026-01-12 03:07:06.575 [info] [127.0.0.1][4b0f00b5][ExtensionHostConnection] <1388> Extension Host Process exited with code: 0, signal: null.
+2026-01-12 03:07:08.096 [info] [127.0.0.1][7677f26d][ManagementConnection] New connection established.
+2026-01-12 03:07:08.504 [info] [127.0.0.1][087af2d6][ExtensionHostConnection] New connection established.
+2026-01-12 03:07:08.516 [info] [127.0.0.1][087af2d6][ExtensionHostConnection] <1609> Launched Extension Host Process.
+2026-01-12 03:21:11.120 [info] Getting Manifest... github.vscode-github-actions
+2026-01-12 03:21:12.107 [info] Installing extension: github.vscode-github-actions {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"isApplicationScoped":false,"profileLocation":{"$mid":1,"fsPath":"/home/sandeepkhadka9090/.codeoss/extensions/extensions.json","external":"file:///home/sandeepkhadka9090/.codeoss/extensions/extensions.json","path":"/home/sandeepkhadka9090/.codeoss/extensions/extensions.json","scheme":"file"},"productVersion":{"version":"1.104.3-cde","date":"2025-12-21T08:10:56.931Z"}}
+2026-01-12 03:21:14.201 [info] Extracted extension to file:///home/sandeepkhadka9090/.codeoss/extensions/github.vscode-github-actions-0.29.1-universal: github.vscode-github-actions
+2026-01-12 03:21:14.237 [info] Renamed to /home/sandeepkhadka9090/.codeoss/extensions/github.vscode-github-actions-0.29.1-universal
+2026-01-12 03:21:14.270 [info] Extension installed successfully: github.vscode-github-actions file:///home/sandeepkhadka9090/.codeoss/extensions/extensions.json
+2026-01-12 03:21:16.594 [info] Getting Manifest... github.vscode-pull-request-github
+2026-01-12 03:21:16.790 [info] Installing extension: github.vscode-pull-request-github {"isMachineScoped":false,"installPreReleaseVersion":false,"pinned":false,"isApplicationScoped":false,"profileLocation":{"$mid":1,"fsPath":"/home/sandeepkhadka9090/.codeoss/extensions/extensions.json","external":"file:///home/sandeepkhadka9090/.codeoss/extensions/extensions.json","path":"/home/sandeepkhadka9090/.codeoss/extensions/extensions.json","scheme":"file"},"productVersion":{"version":"1.104.3-cde","date":"2025-12-21T08:10:56.931Z"}}
+2026-01-12 03:21:19.275 [info] Extracted extension to file:///home/sandeepkhadka9090/.codeoss/extensions/github.vscode-pull-request-github-0.118.2-universal: github.vscode-pull-request-github
+2026-01-12 03:21:19.311 [info] Renamed to /home/sandeepkhadka9090/.codeoss/extensions/github.vscode-pull-request-github-0.118.2-universal
+2026-01-12 03:21:19.457 [info] Extension installed successfully: github.vscode-pull-request-github file:///home/sandeepkhadka9090/.codeoss/extensions/extensions.json
+2026-01-12 03:43:53.996 [warning] [File Watcher (node.js)] Watcher shutdown because watched path got deleted

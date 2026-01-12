@@ -1,0 +1,9 @@
+git config --global user.email "sandeepkhadka9090@gmail.com"
+git config --global user.name "Sandeep Khadka"
+
+
+git add .
+git commit -m "Added new features for V4"
+git tag v4.0
+git push origin main --tags
+

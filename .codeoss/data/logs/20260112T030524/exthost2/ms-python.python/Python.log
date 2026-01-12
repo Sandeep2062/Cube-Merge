@@ -1,0 +1,36 @@
+2026-01-12 03:07:20.055 [warning] Dir "/home/sandeepkhadka9090/.pixi/envs" is not watchable (directory does not exist)
+2026-01-12 03:07:20.925 [info] Starting Environment refresh
+2026-01-12 03:07:20.926 [info] Searching for interpreters in posix paths locator
+2026-01-12 03:07:20.935 [info] Searching for pyenv environments
+2026-01-12 03:07:20.935 [info] Searching for conda environments
+2026-01-12 03:07:20.936 [info] Searching for global virtual environments
+2026-01-12 03:07:20.936 [info] Searching for custom virtual environments
+2026-01-12 03:07:20.944 [info] Skipping ActivatedEnv Detection:  process.env.VSCODE_CLI !== '1'
+2026-01-12 03:07:20.944 [info] Skipping ActivatedEnv Detection:  process.env.VSCODE_CLI !== '1'
+2026-01-12 03:07:20.949 [info] pyenv is not installed
+2026-01-12 03:07:20.949 [info] Finished searching for pyenv environments: 22 milliseconds
+2026-01-12 03:07:20.950 [info] Finished searching for custom virtual envs: 22 milliseconds
+2026-01-12 03:07:20.966 [info] > conda info --json
+2026-01-12 03:07:20.984 [info] > hatch env show --json
+2026-01-12 03:07:20.984 [info] cwd: .
+2026-01-12 03:07:21.000 [info] > pyenv which python
+2026-01-12 03:07:21.000 [info] cwd: .
+2026-01-12 03:07:21.000 [info] Finished searching for global virtual envs: 72 milliseconds
+2026-01-12 03:07:21.020 [info] Found: /bin/python --> /bin/python3.12
+2026-01-12 03:07:21.025 [info] Found: /bin/python3 --> /bin/python3.12
+2026-01-12 03:07:21.027 [info] Found: /bin/python3.12 --> /bin/python3.12
+2026-01-12 03:07:21.062 [info] Found: /usr/bin/python --> /usr/bin/python3.12
+2026-01-12 03:07:21.065 [info] Found: /usr/bin/python3 --> /usr/bin/python3.12
+2026-01-12 03:07:21.066 [info] Found: /usr/bin/python3.12 --> /usr/bin/python3.12
+2026-01-12 03:07:21.215 [info] Finished searching for interpreters in posix paths locator: 279 milliseconds
+2026-01-12 03:07:21.215 [info] > /bin/python -I /google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/python_files/get_output_via_markers.py /google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/python_files/interpreterInfo.py
+2026-01-12 03:07:21.275 [info] > /usr/bin/python -I /google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/python_files/get_output_via_markers.py /google/devshell/editor/code-oss-for-cloud-shell/extensions/ms-python.python/python_files/interpreterInfo.py
+2026-01-12 03:07:21.275 [info] Environments refresh paths discovered (event): 352 milliseconds
+2026-01-12 03:07:21.275 [info] Environments refresh paths discovered: 352 milliseconds
+2026-01-12 03:07:21.353 [info] Environments refresh finished (event): 430 milliseconds
+2026-01-12 03:07:21.365 [info] Environment refresh took 442 milliseconds
+2026-01-12 03:07:21.384 [info] Python interpreter path: /bin/python
+2026-01-12 03:07:27.973 [info] Starting Jedi language server for sandeepkhadka9090.
+2026-01-12 03:11:29.693 [info] Discover tests for workspace name: sandeepkhadka9090 - uri: /home/sandeepkhadka9090/.codeoss/data/Machine/settings.json
+2026-01-12 03:11:30.701 [info] Discover tests for workspace name: sandeepkhadka9090 - uri: /home/sandeepkhadka9090/.codeoss/data/Machine/settings.json
+2026-01-12 03:20:33.925 [info] Discover tests for workspace name: sandeepkhadka9090 - uri: /home/sandeepkhadka9090

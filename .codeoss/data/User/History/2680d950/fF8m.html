@@ -1,0 +1,551 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Tracker with Summary Dashboard</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+        
+        .tabs {
+            display: flex;
+            background: #2c3e50;
+        }
+        
+        .tab {
+            padding: 15px 25px;
+            background: #34495e;
+            color: white;
+            cursor: pointer;
+            border: none;
+            font-size: 14px;
+            transition: background 0.3s;
+        }
+        
+        .tab.active {
+            background: #e67e22;
+        }
+        
+        .tab:hover {
+            background: #3c5a78;
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 20px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        /* Transactions Table */
+        .table-container {
+            overflow-x: auto;
+            margin-bottom: 20px;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 12px;
+        }
+        
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: #e67e22;
+            color: white;
+            font-weight: bold;
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        
+        .income {
+            color: #006600;
+            font-weight: bold;
+        }
+        
+        .expense {
+            color: #cc0000;
+            font-weight: bold;
+        }
+        
+        .transfer {
+            color: #333;
+        }
+        
+        /* Current Balance */
+        .balance-section {
+            background: #e67e22;
+            color: white;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+        
+        .balance-item {
+            display: flex;
+            justify-content: space-between;
+            margin: 5px 0;
+            padding: 5px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 3px;
+        }
+        
+        /* Summary Dashboard */
+        .summary-controls {
+            background: #ecf0f1;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        
+        .summary-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+        
+        .summary-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            border-left: 5px solid #3498db;
+        }
+        
+        .summary-card.income {
+            border-left-color: #27ae60;
+        }
+        
+        .summary-card.expense {
+            border-left-color: #e74c3c;
+        }
+        
+        .summary-card h3 {
+            margin: 0 0 10px 0;
+            color: #2c3e50;
+            font-size: 16px;
+        }
+        
+        .summary-card .amount {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2c3e50;
+        }
+        
+        .charts-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        
+        .chart-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .chart-card h3 {
+            margin: 0 0 20px 0;
+            color: #2c3e50;
+            text-align: center;
+        }
+        
+        select, input {
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+        
+        label {
+            display: inline-block;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        
+        .control-group {
+            display: inline-block;
+            margin-right: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .charts-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .summary-numbers {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Tabs -->
+        <div class="tabs">
+            <button class="tab active" onclick="openTab(event, 'transactions')">Expenses 2082</button>
+            <button class="tab" onclick="openTab(event, 'summary')">Summary</button>
+        </div>
+        
+        <!-- Transactions Tab -->
+        <div id="transactions" class="tab-content active">
+            <div class="table-container">
+                <table id="transactionsTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Month</th>
+                            <th>Category</th>
+                            <th>Description</th>
+                            <th>Amount (NPR)</th>
+                            <th>Payment Method</th>
+                            <th>Transaction Type</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="transactionsBody">
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="balance-section">
+                <h3>Current Balance</h3>
+                <div id="balanceDisplay"></div>
+            </div>
+        </div>
+        
+        <!-- Summary Tab -->
+        <div id="summary" class="tab-content">
+            <div class="summary-controls">
+                <div class="control-group">
+                    <label for="monthSelect">Select Month:</label>
+                    <select id="monthSelect" onchange="updateSummary()">
+                        <option value="Baisakh">Baisakh</option>
+                        <option value="Jestha">Jestha</option>
+                        <option value="Ashadh">Ashadh</option>
+                        <option value="Shrawan">Shrawan</option>
+                        <option value="Bhadra">Bhadra</option>
+                        <option value="Ashwin">Ashwin</option>
+                        <option value="Kartik">Kartik</option>
+                        <option value="Mangsir">Mangsir</option>
+                        <option value="Poush">Poush</option>
+                        <option value="Magh">Magh</option>
+                        <option value="Falgun">Falgun</option>
+                        <option value="Chaitra">Chaitra</option>
+                    </select>
+                </div>
+            </div>
+            
+            <div class="summary-numbers" id="summaryNumbers">
+            </div>
+            
+            <div class="charts-container">
+                <div class="chart-card">
+                    <h3>Monthly Expenses by Category</h3>
+                    <canvas id="monthlyChart"></canvas>
+                </div>
+                <div class="chart-card">
+                    <h3>Income vs Expenses by Month</h3>
+                    <canvas id="yearlyChart"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Sample data with random values
+        let transactions = [
+            {date: '2082-05-15', month: 'Bhadra', category: 'Opening Balance', description: 'Opening Balance', amount: 94.36, paymentMethod: 'M-Banking NIMB', type: 'Income', notes: 'Opening Balance'},
+            {date: '2082-05-15', month: 'Bhadra', category: 'Opening Balance', description: 'Opening Balance', amount: 217.19, paymentMethod: 'M-Banking Garima', type: 'Income', notes: 'Opening Balance'},
+            {date: '2082-05-15', month: 'Bhadra', category: 'Opening Balance', description: 'Opening Balance', amount: 4345.65, paymentMethod: 'eSewa', type: 'Income', notes: 'Opening Balance'},
+            {date: '2082-05-15', month: 'Bhadra', category: 'Opening Balance', description: 'Opening Balance', amount: 57.53, paymentMethod: 'Khalti', type: 'Income', notes: 'Opening Balance'},
+            {date: '2082-05-15', month: 'Bhadra', category: 'Opening Balance', description: 'Opening Balance', amount: 3895.00, paymentMethod: 'Cash', type: 'Income', notes: 'Opening Balance'},
+            
+            {date: '2082-05-16', month: 'Bhadra', category: 'Salary', description: 'Monthly Salary', amount: 25000, paymentMethod: 'M-Banking NIMB', type: 'Income', notes: 'Salary deposit'},
+            {date: '2082-05-17', month: 'Bhadra', category: 'Food', description: 'Grocery Shopping', amount: 2500, paymentMethod: 'Cash', type: 'Expense', notes: 'Weekly groceries'},
+            {date: '2082-05-18', month: 'Bhadra', category: 'Transport', description: 'Bus Fare', amount: 150, paymentMethod: 'Cash', type: 'Expense', notes: 'Daily commute'},
+            {date: '2082-05-19', month: 'Bhadra', category: 'Transfer', description: 'Cash to eSewa', amount: 5000, paymentMethod: 'Transfer', type: 'Transfer', notes: 'Cash → eSewa'},
+            {date: '2082-05-20', month: 'Bhadra', category: 'Entertainment', description: 'Movie Tickets', amount: 800, paymentMethod: 'eSewa', type: 'Expense', notes: 'Weekend movie'},
+            
+            {date: '2082-06-01', month: 'Ashwin', category: 'Freelance', description: 'Web Design Project', amount: 15000, paymentMethod: 'eSewa', type: 'Income', notes: 'Client payment'},
+            {date: '2082-06-02', month: 'Ashwin', category: 'Food', description: 'Restaurant Bill', amount: 1200, paymentMethod: 'Khalti', type: 'Expense', notes: 'Dinner with friends'},
+            {date: '2082-06-03', month: 'Ashwin', category: 'Shopping', description: 'Clothes', amount: 3500, paymentMethod: 'M-Banking Garima', type: 'Expense', notes: 'New clothes'},
+            {date: '2082-06-04', month: 'Ashwin', category: 'Transfer', description: 'Bank to Khalti', amount: 2000, paymentMethod: 'Transfer', type: 'Transfer', notes: 'M-Banking NIMB → Khalti'},
+            {date: '2082-06-05', month: 'Ashwin', category: 'Bills', description: 'Internet Bill', amount: 1500, paymentMethod: 'Khalti', type: 'Expense', notes: 'Monthly internet'},
+            
+            {date: '2082-07-01', month: 'Kartik', category: 'Bonus', description: 'Festival Bonus', amount: 10000, paymentMethod: 'M-Banking NIMB', type: 'Income', notes: 'Dashain bonus'},
+            {date: '2082-07-02', month: 'Kartik', category: 'Food', description: 'Festival Shopping', amount: 5000, paymentMethod: 'Cash', type: 'Expense', notes: 'Dashain shopping'},
+            {date: '2082-07-03', month: 'Kartik', category: 'Transport', description: 'Taxi Fare', amount: 800, paymentMethod: 'Cash', type: 'Expense', notes: 'Airport pickup'},
+            {date: '2082-07-04', month: 'Kartik', category: 'Gift', description: 'Family Gifts', amount: 4000, paymentMethod: 'eSewa', type: 'Expense', notes: 'Dashain gifts'},
+        ];
+
+        let accounts = ['M-Banking NIMB', 'M-Banking Garima', 'eSewa', 'Khalti', 'Cash'];
+        let monthlyChart, yearlyChart;
+
+        function openTab(evt, tabName) {
+            var i, tabcontent, tablinks;
+            tabcontent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabcontent.length; i++) {
+                tabcontent[i].classList.remove("active");
+            }
+            tablinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tablinks.length; i++) {
+                tablinks[i].classList.remove("active");
+            }
+            document.getElementById(tabName).classList.add("active");
+            evt.currentTarget.classList.add("active");
+            
+            if (tabName === 'summary') {
+                setTimeout(() => {
+                    updateSummary();
+                }, 100);
+            }
+        }
+
+        function renderTransactions() {
+            const tbody = document.getElementById('transactionsBody');
+            tbody.innerHTML = '';
+            
+            transactions.forEach(t => {
+                const row = document.createElement('tr');
+                const amountClass = t.type === 'Income' ? 'income' : t.type === 'Expense' ? 'expense' : 'transfer';
+                
+                row.innerHTML = `
+                    <td>${t.date}</td>
+                    <td>${t.month}</td>
+                    <td>${t.category}</td>
+                    <td>${t.description}</td>
+                    <td class="${amountClass}">₹ ${t.amount.toLocaleString()}</td>
+                    <td>${t.paymentMethod}</td>
+                    <td>${t.type}</td>
+                    <td>${t.notes}</td>
+                `;
+                tbody.appendChild(row);
+            });
+        }
+
+        function calculateBalance(account) {
+            let balance = 0;
+            
+            transactions.forEach(t => {
+                if (t.paymentMethod === account) {
+                    if (t.type === 'Income') {
+                        balance += t.amount;
+                    } else if (t.type === 'Expense') {
+                        balance -= t.amount;
+                    }
+                }
+                
+                // Handle transfers
+                if (t.type === 'Transfer') {
+                    if (t.notes.includes(`→ ${account}`)) {
+                        balance += t.amount; // Money coming in
+                    } else if (t.notes.includes(`${account} →`)) {
+                        balance -= t.amount; // Money going out
+                    }
+                }
+            });
+            
+            return balance;
+        }
+
+        function renderBalances() {
+            const balanceDiv = document.getElementById('balanceDisplay');
+            balanceDiv.innerHTML = '';
+            
+            accounts.forEach(account => {
+                const balance = calculateBalance(account);
+                const item = document.createElement('div');
+                item.className = 'balance-item';
+                item.innerHTML = `
+                    <span>${account}</span>
+                    <span>₹ ${balance.toLocaleString()}</span>
+                `;
+                balanceDiv.appendChild(item);
+            });
+        }
+
+        function getMonthlyData(month) {
+            return transactions.filter(t => t.month === month && t.category !== 'Opening Balance');
+        }
+
+        function getYearlyData() {
+            return transactions.filter(t => t.category !== 'Opening Balance');
+        }
+
+        function updateSummary() {
+            const selectedMonth = document.getElementById('monthSelect').value;
+            const monthlyData = getMonthlyData(selectedMonth);
+            const yearlyData = getYearlyData();
+            
+            // Calculate summaries
+            const monthlyIncome = monthlyData.filter(t => t.type === 'Income').reduce((sum, t) => sum + t.amount, 0);
+            const monthlyExpenses = monthlyData.filter(t => t.type === 'Expense').reduce((sum, t) => sum + t.amount, 0);
+            const yearlyIncome = yearlyData.filter(t => t.type === 'Income').reduce((sum, t) => sum + t.amount, 0);
+            const yearlyExpenses = yearlyData.filter(t => t.type === 'Expense').reduce((sum, t) => sum + t.amount, 0);
+            
+            // Update summary numbers
+            document.getElementById('summaryNumbers').innerHTML = `
+                <div class="summary-card income">
+                    <h3>Monthly Income</h3>
+                    <div class="amount">₹ ${monthlyIncome.toLocaleString()}</div>
+                </div>
+                <div class="summary-card expense">
+                    <h3>Monthly Expenses</h3>
+                    <div class="amount">₹ ${monthlyExpenses.toLocaleString()}</div>
+                </div>
+                <div class="summary-card income">
+                    <h3>Yearly Income</h3>
+                    <div class="amount">₹ ${yearlyIncome.toLocaleString()}</div>
+                </div>
+                <div class="summary-card expense">
+                    <h3>Yearly Expenses</h3>
+                    <div class="amount">₹ ${yearlyExpenses.toLocaleString()}</div>
+                </div>
+            `;
+            
+            updateCharts(selectedMonth);
+        }
+
+        function updateCharts(selectedMonth) {
+            updateMonthlyChart(selectedMonth);
+            updateYearlyChart();
+        }
+
+        function updateMonthlyChart(month) {
+            const monthlyData = getMonthlyData(month).filter(t => t.type === 'Expense');
+            
+            // Group by category
+            const categoryData = {};
+            monthlyData.forEach(t => {
+                if (!categoryData[t.category]) {
+                    categoryData[t.category] = 0;
+                }
+                categoryData[t.category] += t.amount;
+            });
+            
+            const categories = Object.keys(categoryData);
+            const amounts = Object.values(categoryData);
+            
+            if (monthlyChart) {
+                monthlyChart.destroy();
+            }
+            
+            const ctx = document.getElementById('monthlyChart').getContext('2d');
+            monthlyChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: categories,
+                    datasets: [{
+                        label: 'Amount (NPR)',
+                        data: amounts,
+                        backgroundColor: [
+                            '#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', 
+                            '#9966FF', '#FF9F40', '#C9CBCF', '#4BC0C0'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '₹' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateYearlyChart() {
+            const yearlyData = getYearlyData();
+            const months = ['Baisakh', 'Jestha', 'Ashadh', 'Shrawan', 'Bhadra', 'Ashwin', 'Kartik', 'Mangsir', 'Poush', 'Magh', 'Falgun', 'Chaitra'];
+            
+            const incomeByMonth = months.map(month => {
+                return yearlyData.filter(t => t.month === month && t.type === 'Income').reduce((sum, t) => sum + t.amount, 0);
+            });
+            
+            const expensesByMonth = months.map(month => {
+                return yearlyData.filter(t => t.month === month && t.type === 'Expense').reduce((sum, t) => sum + t.amount, 0);
+            });
+            
+            if (yearlyChart) {
+                yearlyChart.destroy();
+            }
+            
+            const ctx = document.getElementById('yearlyChart').getContext('2d');
+            yearlyChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: months,
+                    datasets: [{
+                        label: 'Income',
+                        data: incomeByMonth,
+                        backgroundColor: '#27ae60'
+                    }, {
+                        label: 'Expenses',
+                        data: expensesByMonth,
+                        backgroundColor: '#e74c3c'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                callback: function(value) {
+                                    return '₹' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+                }
+            });
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', function() {
+            renderTransactions();
+            renderBalances();
+        });
+    </script>
+</body>
+</html>

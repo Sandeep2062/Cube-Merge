@@ -1,0 +1,4 @@
+2026-01-12 03:07:14.580 [info] Log level: Info
+2026-01-12 03:52:09.453 [warning] [GitHubSourceControlHistoryItemDetailsProvider][_loadAssignableUsers] Failed to load assignable user(s) for Sandeep2062/my-cube-project: Error: No GitHub authentication session available.
+2026-01-12 03:52:11.697 [warning] [GitHubBranchProtectionProvider][updateRepositoryBranchProtection] Failed to update repository branch protection: No GitHub authentication session available.
+2026-01-12 03:52:19.407 [warning] [GitHubBranchProtectionProvider][updateRepositoryBranchProtection] Failed to update repository branch protection: No GitHub authentication session available.

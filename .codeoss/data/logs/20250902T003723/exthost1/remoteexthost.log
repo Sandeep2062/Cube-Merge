@@ -1,0 +1,30 @@
+2025-09-02 00:37:32.966 [info] Extension host with pid 1226 started
+2025-09-02 00:37:33.197 [info] ExtensionService#_doActivateExtension vscode.emmet, startup: false, activationEvent: 'onLanguage'
+2025-09-02 00:37:33.378 [info] ExtensionService#_doActivateExtension vscode.git-base, startup: true, activationEvent: '*', root cause: vscode.git
+2025-09-02 00:37:33.587 [info] ExtensionService#_doActivateExtension vscode.git, startup: true, activationEvent: '*'
+2025-09-02 00:37:33.588 [info] ExtensionService#_doActivateExtension vscode.github, startup: true, activationEvent: '*'
+2025-09-02 00:37:33.848 [info] Eager extensions activated
+2025-09-02 00:37:33.848 [info] ExtensionService#_doActivateExtension EditorConfig.EditorConfig, startup: false, activationEvent: 'onStartupFinished'
+2025-09-02 00:37:33.849 [info] ExtensionService#_doActivateExtension google.cloud-shell, startup: false, activationEvent: 'onStartupFinished'
+2025-09-02 00:37:33.849 [info] ExtensionService#_doActivateExtension google.geminicodeassist, startup: false, activationEvent: 'onStartupFinished', root cause: googlecloudtools.cloudcode
+2025-09-02 00:37:33.849 [info] ExtensionService#_doActivateExtension vscode.debug-auto-launch, startup: false, activationEvent: 'onStartupFinished'
+2025-09-02 00:37:33.850 [info] ExtensionService#_doActivateExtension google.gemini-cli-vscode-ide-companion, startup: false, activationEvent: 'onStartupFinished'
+2025-09-02 00:37:33.850 [info] ExtensionService#_doActivateExtension vscode.merge-conflict, startup: false, activationEvent: 'onStartupFinished'
+2025-09-02 00:37:36.832 [info] ExtensionService#_doActivateExtension vscode.configuration-editing, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-09-02 00:37:36.832 [info] ExtensionService#_doActivateExtension vscode.json-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-09-02 00:37:36.833 [info] ExtensionService#_doActivateExtension vscode.typescript-language-features, startup: false, activationEvent: 'onLanguage:jsonc'
+2025-09-02 00:37:37.009 [info] ExtensionService#_doActivateExtension googlecloudtools.cloudcode, startup: false, activationEvent: 'onStartupFinished'
+2025-09-02 00:37:39.224 [error] onWillSaveTextDocument-listener from extension 'EditorConfig.EditorConfig' threw ERROR
+2025-09-02 00:37:39.231 [error] Error: timeout
+    at Timeout._onTimeout (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:145:103282)
+    at listOnTimeout (node:internal/timers:581:17)
+    at processTimers (node:internal/timers:519:7)
+2025-09-02 00:38:53.020 [info] ExtensionService#_doActivateExtension vscode.html-language-features, startup: false, activationEvent: 'onLanguage:html'
+2025-09-02 00:38:59.415 [info] Extension host terminating: received terminate message from renderer
+2025-09-02 00:38:59.617 [error] [vscode.html-language-features] provider FAILED
+2025-09-02 00:38:59.617 [error] Error: Starting server failed
+    at R.$start (/google/devshell/editor/code-oss-for-cloud-shell/extensions/html-language-features/client/dist/node/htmlClientMain.js:2:297078)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at R.sendRequest (/google/devshell/editor/code-oss-for-cloud-shell/extensions/html-language-features/client/dist/node/htmlClientMain.js:2:280527)
+    at g4.provideColors (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:145:151079)
+2025-09-02 00:38:59.873 [info] Extension host with pid 1226 exiting with code 0

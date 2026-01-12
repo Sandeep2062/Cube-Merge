@@ -1,0 +1,22 @@
+Activating GitHub Actions extension...
+
+Cannot fetch github context
+Error: Cannot fetch github context
+    at De (/home/sandeepkhadka9090/.codeoss/extensions/github.vscode-github-actions-0.29.1-universal/dist/extension-node.js:1:1153504)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at /home/sandeepkhadka9090/.codeoss/extensions/github.vscode-github-actions-0.29.1-universal/dist/extension-node.js:1:1339349
+    at us (/home/sandeepkhadka9090/.codeoss/extensions/github.vscode-github-actions-0.29.1-universal/dist/extension-node.js:1:1338421)
+    at _b.n (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:112:13382)
+    at _b.m (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:112:13345)
+    at _b.l (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:112:12801)
+
+Cannot fetch github context
+Error: Cannot fetch github context
+    at De (/home/sandeepkhadka9090/.codeoss/extensions/github.vscode-github-actions-0.29.1-universal/dist/extension-node.js:1:1153504)
+    at processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at Ne (/home/sandeepkhadka9090/.codeoss/extensions/github.vscode-github-actions-0.29.1-universal/dist/extension-node.js:1:1153870)
+    at us (/home/sandeepkhadka9090/.codeoss/extensions/github.vscode-github-actions-0.29.1-universal/dist/extension-node.js:1:1350117)
+    at _b.n (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:112:13382)
+    at _b.m (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:112:13345)
+    at _b.l (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:112:12801)
+...initialized

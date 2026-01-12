@@ -1,0 +1,6 @@
+[Error - 12:43:13 AM] Request textDocument/documentColor failed.
+Error: Starting server failed
+    at R.$start (/google/devshell/editor/code-oss-for-cloud-shell/extensions/html-language-features/client/dist/node/htmlClientMain.js:2:297078)
+    at processTicksAndRejections (node:internal/process/task_queues:95:5)
+    at R.sendRequest (/google/devshell/editor/code-oss-for-cloud-shell/extensions/html-language-features/client/dist/node/htmlClientMain.js:2:280527)
+    at g4.provideColors (file:///google/devshell/editor/code-oss-for-cloud-shell/out/vs/workbench/api/node/extensionHostProcess.js:145:151079)
