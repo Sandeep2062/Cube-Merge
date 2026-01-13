@@ -366,6 +366,7 @@ def update_mode_ui():
         grade_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 10), before=office_frame)
         calendar_frame.pack(fill=tk.X, pady=(0, 10), before=office_frame)
 
+# --------------------------- V6.2 ----------------------------
 
 root = tk.Tk()
 root.title("Cube Data Processor")
@@ -386,20 +387,20 @@ output_path = tk.StringVar(value=settings.get("output_path", ""))
 calendar_path = tk.StringVar(value=settings.get("calendar_path", ""))
 mode_var = tk.StringVar(value="both")
 
-# Enhanced Color Scheme
-BG_PRIMARY = "#0a0e27"          # Deep blue-black
-BG_SECONDARY = "#151933"        # Slightly lighter blue-black
-BG_CARD = "#1e2140"             # Card background
-BG_HOVER = "#252850"            # Hover state
-BG_INPUT = "#1a1d3a"            # Input field background
-TEXT_PRIMARY = "#ffffff"        # White text
-TEXT_SECONDARY = "#a0a9c9"      # Light blue-gray text
-ACCENT_PRIMARY = "#4361ee"      # Primary blue
-ACCENT_SECONDARY = "#3f37c9"    # Secondary blue
-ACCENT_SUCCESS = "#06ffa5"      # Bright green for success
-ACCENT_WARNING = "#ffbe0b"      # Amber for warnings
-BORDER_COLOR = "#2a2e5a"        # Border color
-PROGRESS_COLOR = "#06ffa5"      # Progress bar color
+# Enhanced Color Scheme for Beautiful UI
+BG_PRIMARY = "#0d1117"          # GitHub dark background
+BG_SECONDARY = "#161b22"        # Slightly lighter
+BG_CARD = "#21262d"             # Card background
+BG_HOVER = "#30363d"            # Hover state
+BG_INPUT = "#0d1117"            # Input field background
+TEXT_PRIMARY = "#f0f6fc"        # Crisp white text
+TEXT_SECONDARY = "#8b949e"      # Muted text
+ACCENT_PRIMARY = "#58a6ff"      # GitHub blue
+ACCENT_SECONDARY = "#1f6feb"    # Darker blue
+ACCENT_SUCCESS = "#3fb950"      # GitHub green
+ACCENT_WARNING = "#d29922"      # GitHub yellow
+BORDER_COLOR = "#30363d"        # Border color
+PROGRESS_COLOR = "#3fb950"      # Progress bar color
 
 # Set root background
 root.configure(bg=BG_PRIMARY)
@@ -426,7 +427,7 @@ style.configure('Success.TButton',
                 font=("Segoe UI", 12, "bold"), 
                 borderwidth=0)
 style.map('Success.TButton', 
-          background=[('active', '#00e891')])
+          background=[('active', '#2ea043')])
 
 style.configure('Card.TFrame', 
                 background=BG_CARD, 
@@ -440,73 +441,135 @@ style.configure("Horizontal.TProgressbar",
                 borderwidth=0, 
                 thickness=10)
 
-# Gradient Header
-header_frame = tk.Frame(root, bg=ACCENT_PRIMARY, height=100)
+# Enhanced Header with Modern Design
+header_frame = tk.Frame(root, bg=BG_PRIMARY, height=120)
 header_frame.pack(fill=tk.X)
 header_frame.pack_propagate(False)
 
-# Add gradient effect to header
-gradient_frame = tk.Frame(header_frame, bg=BG_PRIMARY, height=100)
-gradient_frame.place(x=0, y=0, relwidth=1, relheight=1)
+# Create a top bar with gradient effect
+top_bar = tk.Frame(header_frame, bg=ACCENT_PRIMARY, height=4)
+top_bar.pack(fill=tk.X)
 
-# Create gradient effect
-for i in range(100):
-    # Calculate color values and convert to integers
-    r = int(67 + (10 - 67) * (i / 100))  # Red channel
-    g = int(97 + (14 - 97) * (i / 100))  # Green channel  
-    b = int(238 + (39 - 238) * (i / 100))  # Blue channel
-    
-    # Format as hex color
-    color = f"#{r:02x}{g:02x}{b:02x}"
-    frame = tk.Frame(gradient_frame, bg=color, height=1)
-    frame.place(x=0, y=i, relwidth=1)
+# Main header container with subtle gradient background
+header_bg = tk.Frame(header_frame, bg=BG_CARD)
+header_bg.pack(fill=tk.BOTH, expand=True, padx=30, pady=10)
 
-# Logo
-logo_container = tk.Frame(header_frame, bg=ACCENT_PRIMARY)
-logo_container.place(x=30, y=20)
+# Left side - Logo and Title
+left_section = tk.Frame(header_bg, bg=BG_CARD)
+left_section.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+
+# Logo with elegant frame
+logo_frame = tk.Frame(left_section, bg=BG_CARD, highlightbackground=ACCENT_PRIMARY, highlightthickness=2)
+logo_frame.pack(side=tk.LEFT, padx=(0, 20))
 
 try:
     from PIL import Image, ImageTk
     logo_img = Image.open("logo.png")
-    logo_img = logo_img.resize((60, 60), Image.Resampling.LANCZOS)
+    logo_img = logo_img.resize((70, 70), Image.Resampling.LANCZOS)
     logo_photo = ImageTk.PhotoImage(logo_img)
-    logo_label = tk.Label(logo_container, image=logo_photo, bg=ACCENT_PRIMARY)
+    logo_label = tk.Label(logo_frame, image=logo_photo, bg=BG_CARD)
     logo_label.image = logo_photo
-    logo_label.pack()
+    logo_label.pack(padx=5, pady=5)
 except:
-    logo_label = tk.Label(logo_container, text="🔷", font=("Segoe UI", 44), bg=ACCENT_PRIMARY, fg="white")
-    logo_label.pack()
+    # Fallback to emoji with styling
+    logo_label = tk.Label(logo_frame, text="🔷", font=("Segoe UI", 48), 
+                         bg=BG_CARD, fg=ACCENT_PRIMARY)
+    logo_label.pack(padx=5, pady=5)
 
-# Title
-title_container = tk.Frame(header_frame, bg=ACCENT_PRIMARY)
-title_container.pack(expand=True)
+# Title section
+title_section = tk.Frame(left_section, bg=BG_CARD)
+title_section.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
 
-title_label = tk.Label(title_container, text="CUBE DATA PROCESSOR", 
-                       font=("Segoe UI", 28, "bold"), bg=ACCENT_PRIMARY, fg="white", 
-                       pady=12)
-title_label.pack()
+# Main title with better styling
+title_label = tk.Label(title_section, text="CUBE DATA PROCESSOR", 
+                       font=("Segoe UI", 32, "bold"), bg=BG_CARD, fg=TEXT_PRIMARY, 
+                       anchor="w")
+title_label.pack(anchor="w", pady=(5, 0))
 
-subtitle_label = tk.Label(title_container, text="Professional Edition", 
-                         font=("Segoe UI", 10), bg=ACCENT_PRIMARY, fg="#e0e7ff")
-subtitle_label.pack()
+# Subtitle with icon
+subtitle_container = tk.Frame(title_section, bg=BG_CARD)
+subtitle_container.pack(anchor="w", pady=(2, 0))
 
-# Developer Credit
-credit_frame = tk.Frame(header_frame, bg=ACCENT_PRIMARY)
-credit_frame.place(relx=1.0, y=20, anchor="ne", x=-30)
+subtitle_icon = tk.Label(subtitle_container, text="⚡", font=("Segoe UI", 12), 
+                        bg=BG_CARD, fg=ACCENT_WARNING)
+subtitle_icon.pack(side=tk.LEFT, padx=(0, 5))
 
-credit_label = tk.Label(credit_frame, text="Developed by", 
-                       font=("Segoe UI", 9), bg=ACCENT_PRIMARY, fg="#e0e7ff")
-credit_label.pack()
+subtitle_label = tk.Label(subtitle_container, text="Professional Edition v2.0", 
+                         font=("Segoe UI", 12, "italic"), bg=BG_CARD, fg=TEXT_SECONDARY)
+subtitle_label.pack(side=tk.LEFT)
 
-dev_name_label = tk.Label(credit_frame, text="SANDEEP", 
-                         font=("Segoe UI", 14, "bold"), bg=ACCENT_PRIMARY, fg="white")
-dev_name_label.pack()
+# Status indicator
+status_frame = tk.Frame(title_section, bg=BG_CARD)
+status_frame.pack(anchor="w", pady=(5, 0))
 
-github_label = tk.Label(credit_frame, text="github.com/Sandeep2062", 
-                       font=("Segoe UI", 9), bg=ACCENT_PRIMARY, fg="#a5b4fc", cursor="hand2", 
-                       underline=True)
-github_label.pack()
-github_label.bind("<Button-1>", lambda e: os.system("start https://github.com/Sandeep2062/Cube-Data-Processor"))
+status_dot = tk.Label(status_frame, text="●", font=("Segoe UI", 10), 
+                     bg=BG_CARD, fg=ACCENT_SUCCESS)
+status_dot.pack(side=tk.LEFT, padx=(0, 5))
+
+status_label = tk.Label(status_frame, text="Ready", 
+                       font=("Segoe UI", 10), bg=BG_CARD, fg=ACCENT_SUCCESS)
+status_label.pack(side=tk.LEFT)
+
+# Right side - Developer Info
+right_section = tk.Frame(header_bg, bg=BG_CARD)
+right_section.pack(side=tk.RIGHT, padx=(20, 0))
+
+# Developer card with elegant styling
+dev_card = tk.Frame(right_section, bg=BG_SECONDARY, relief=tk.RAISED, bd=1)
+dev_card.pack(pady=10)
+
+# Developer header
+dev_header = tk.Frame(dev_card, bg=ACCENT_PRIMARY)
+dev_header.pack(fill=tk.X, padx=2, pady=2)
+
+dev_title = tk.Label(dev_header, text="DEVELOPER", 
+                    font=("Segoe UI", 9, "bold"), bg=ACCENT_PRIMARY, fg="white")
+dev_title.pack(pady=5)
+
+# Developer info
+dev_info_frame = tk.Frame(dev_card, bg=BG_SECONDARY)
+dev_info_frame.pack(padx=15, pady=10)
+
+# Developer name with icon
+dev_name_frame = tk.Frame(dev_info_frame, bg=BG_SECONDARY)
+dev_name_frame.pack(anchor="w", pady=(0, 5))
+
+dev_icon = tk.Label(dev_name_frame, text="👨‍💻", font=("Segoe UI", 16), 
+                   bg=BG_SECONDARY, fg=TEXT_PRIMARY)
+dev_icon.pack(side=tk.LEFT, padx=(0, 8))
+
+dev_name_label = tk.Label(dev_name_frame, text="SANDEEP", 
+                         font=("Segoe UI", 16, "bold"), bg=BG_SECONDARY, fg=TEXT_PRIMARY)
+dev_name_label.pack(side=tk.LEFT)
+
+# GitHub link with button styling
+github_frame = tk.Frame(dev_info_frame, bg=BG_SECONDARY)
+github_frame.pack(anchor="w", pady=(5, 0))
+
+github_btn = tk.Button(github_frame, text="🔗 GitHub Profile", 
+                      font=("Segoe UI", 9, "bold"), bg=BG_CARD, fg=ACCENT_PRIMARY,
+                      activebackground=BG_HOVER, activeforeground=ACCENT_SECONDARY,
+                      relief=tk.FLAT, cursor="hand2", padx=10, pady=5, bd=0,
+                      command=lambda: os.system("start https://github.com/Sandeep2062/Cube-Data-Processor"))
+github_btn.pack()
+
+# Add hover effect to GitHub button
+def github_on_enter(e):
+    github_btn.configure(bg=BG_HOVER)
+
+def github_on_leave(e):
+    github_btn.configure(bg=BG_CARD)
+
+github_btn.bind("<Enter>", github_on_enter)
+github_btn.bind("<Leave>", github_on_leave)
+
+# Version info at bottom
+version_frame = tk.Frame(dev_card, bg=BG_SECONDARY)
+version_frame.pack(fill=tk.X, padx=2, pady=(0, 2))
+
+version_label = tk.Label(version_frame, text="Version 2.0.0 | Build 2026.1", 
+                        font=("Segoe UI", 8), bg=BG_SECONDARY, fg=TEXT_SECONDARY)
+version_label.pack(pady=3)
 
 # Main Container with Scrollbar
 main_canvas = tk.Canvas(root, bg=BG_PRIMARY, highlightthickness=0)
@@ -597,8 +660,8 @@ add_btn = tk.Button(btn_frame, text="➕ Add Files", command=add_grades,
 add_btn.pack(side=tk.LEFT, padx=5)
 
 clear_btn = tk.Button(btn_frame, text="🗑️ Clear", command=clear_grades, 
-                     bg="#e63946", fg=TEXT_PRIMARY, font=("Segoe UI", 10, "bold"),
-                     activebackground="#d62828", activeforeground=TEXT_PRIMARY,
+                     bg="#da3633", fg=TEXT_PRIMARY, font=("Segoe UI", 10, "bold"),
+                     activebackground="#b91c1c", activeforeground=TEXT_PRIMARY,
                      relief=tk.FLAT, cursor="hand2", padx=15, pady=8, bd=0)
 clear_btn.pack(side=tk.LEFT, padx=5)
 
@@ -614,7 +677,7 @@ def add_hover_effect(button, bg_color, hover_color):
     button.bind("<Leave>", on_leave)
 
 add_hover_effect(add_btn, ACCENT_PRIMARY, ACCENT_SECONDARY)
-add_hover_effect(clear_btn, "#e63946", "#d62828")
+add_hover_effect(clear_btn, "#da3633", "#b91c1c")
 
 grade_listbox = tk.Listbox(grade_frame, height=4, font=("Consolas", 10), 
                            bg=BG_INPUT, fg=TEXT_PRIMARY, relief=tk.FLAT, bd=0, 
@@ -700,13 +763,13 @@ glow_frame.pack(padx=10, pady=10)
 
 start_btn = tk.Button(glow_frame, text="▶️  START PROCESSING", command=run_processing,
                      font=("Segoe UI", 14, "bold"), bg=ACCENT_SUCCESS, fg=BG_PRIMARY,
-                     activebackground="#00e891", relief=tk.FLAT, cursor="hand2",
+                     activebackground="#2ea043", relief=tk.FLAT, cursor="hand2",
                      padx=40, pady=18, bd=0)
 start_btn.pack()
 
 def start_btn_on_enter(e):
-    start_btn.configure(bg="#00e891")
-    glow_frame.configure(highlightbackground="#00e891")
+    start_btn.configure(bg="#2ea043")
+    glow_frame.configure(highlightbackground="#2ea043")
 
 def start_btn_on_leave(e):
     start_btn.configure(bg=ACCENT_SUCCESS)
@@ -740,14 +803,43 @@ log_box = tk.Text(log_frame, height=10, font=("Consolas", 10), bg=BG_INPUT,
 log_box.pack(fill=tk.BOTH, expand=True)
 log_scrollbar.config(command=log_box.yview)
 
-# Footer
-footer = tk.Frame(root, bg=BG_SECONDARY, height=40)
+# Enhanced Footer
+footer = tk.Frame(root, bg=BG_SECONDARY, height=50)
 footer.pack(fill=tk.X, side=tk.BOTTOM)
 footer.pack_propagate(False)
 
-footer_label = tk.Label(footer, text="© 2026 Sandeep | github.com/Sandeep2062/Cube-Data-Processor", 
-                       font=("Segoe UI", 9), bg=BG_SECONDARY, fg=TEXT_SECONDARY)
-footer_label.pack(expand=True)
+# Footer content
+footer_content = tk.Frame(footer, bg=BG_SECONDARY)
+footer_content.pack(expand=True)
+
+# Left side - copyright
+copyright_label = tk.Label(footer_content, text="© 2026 Sandeep", 
+                          font=("Segoe UI", 9), bg=BG_SECONDARY, fg=TEXT_SECONDARY)
+copyright_label.pack(side=tk.LEFT, padx=20)
+
+# Center - status
+footer_status = tk.Label(footer_content, text="● System Ready", 
+                        font=("Segoe UI", 9), bg=BG_SECONDARY, fg=ACCENT_SUCCESS)
+footer_status.pack(side=tk.LEFT, expand=True)
+
+# Right side - links
+links_frame = tk.Frame(footer_content, bg=BG_SECONDARY)
+links_frame.pack(side=tk.RIGHT, padx=20)
+
+github_link = tk.Label(links_frame, text="GitHub", 
+                      font=("Segoe UI", 9), bg=BG_SECONDARY, fg=ACCENT_PRIMARY, 
+                      cursor="hand2")
+github_link.pack(side=tk.LEFT, padx=10)
+github_link.bind("<Button-1>", lambda e: os.system("start https://github.com/Sandeep2062/Cube-Data-Processor"))
+
+separator = tk.Label(links_frame, text="|", font=("Segoe UI", 9), 
+                    bg=BG_SECONDARY, fg=TEXT_SECONDARY)
+separator.pack(side=tk.LEFT)
+
+docs_link = tk.Label(links_frame, text="Documentation", 
+                    font=("Segoe UI", 9), bg=BG_SECONDARY, fg=ACCENT_PRIMARY, 
+                    cursor="hand2")
+docs_link.pack(side=tk.LEFT, padx=10)
 
 # Initialize UI
 update_mode_ui()
