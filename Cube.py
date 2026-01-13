@@ -366,7 +366,6 @@ def update_mode_ui():
         grade_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 10), before=office_frame)
         calendar_frame.pack(fill=tk.X, pady=(0, 10), before=office_frame)
 
-# --------------------------- V6.2 ----------------------------
 
 root = tk.Tk()
 root.title("Cube Data Processor")
