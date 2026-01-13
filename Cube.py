@@ -1,4 +1,5 @@
-import openpyxl
+# Start Button - More space above and below
+start_btn_container = tk.Frame(mainimport openpyxl
 from openpyxl.drawing.image import Image as XLImage
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
@@ -365,11 +366,12 @@ def update_mode_ui():
         grade_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 10), before=office_frame)
         calendar_frame.pack(fill=tk.X, pady=(0, 10), before=office_frame)
 
-# ------------------- ENHANCED DARK UI V6 -------------------
+# ------------------- ENHANCED DARK UI V6.1 -------------------
 
 root = tk.Tk()
 root.title("Cube Data Processor")
-root.geometry("950x870")
+root.geometry("1000x950")  # Bigger window
+root.minsize(950, 900)  # Minimum size to prevent crushing
 root.configure(bg="#0f0f0f")
 
 try:
@@ -466,9 +468,25 @@ github_label = tk.Label(credit_frame, text="github.com/Sandeep2062",
 github_label.pack()
 github_label.bind("<Button-1>", lambda e: os.system("start https://github.com/Sandeep2062/Cube-Data-Processor"))
 
-# Main Container
-main_container = tk.Frame(root, bg=BG_DARK)
-main_container.pack(fill=tk.BOTH, expand=True, padx=25, pady=20)
+# Main Container with Scrollbar
+main_canvas = tk.Canvas(root, bg=BG_DARK, highlightthickness=0)
+main_scrollbar = tk.Scrollbar(root, orient="vertical", command=main_canvas.yview)
+main_container = tk.Frame(main_canvas, bg=BG_DARK)
+
+main_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+main_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=25, pady=20)
+main_canvas.create_window((0, 0), window=main_container, anchor="nw")
+
+def on_frame_configure(event):
+    main_canvas.configure(scrollregion=main_canvas.bbox("all"))
+
+main_container.bind("<Configure>", on_frame_configure)
+
+# Mouse wheel scrolling
+def on_mousewheel(event):
+    main_canvas.yview_scroll(int(-1*(event.delta/120)), "units")
+
+main_canvas.bind_all("<MouseWheel>", on_mousewheel)
 
 # Processing Mode Selection
 mode_selection_frame = tk.LabelFrame(main_container, text="  ⚙️ PROCESSING MODE  ", 
@@ -509,7 +527,7 @@ btn_frame.pack(fill=tk.X, pady=(0, 12))
 ttk.Button(btn_frame, text="➕ Add Files", command=add_grades, style='Dark.TButton').pack(side=tk.LEFT, padx=5)
 ttk.Button(btn_frame, text="🗑️ Clear", command=clear_grades, style='Dark.TButton').pack(side=tk.LEFT, padx=5)
 
-grade_listbox = tk.Listbox(grade_frame, height=4, font=("Consolas", 9), 
+grade_listbox = tk.Listbox(grade_frame, height=3, font=("Consolas", 9), 
                            bg=BG_INPUT, fg=TEXT_PRIMARY, relief=tk.FLAT, bd=0, 
                            highlightthickness=1, highlightbackground=BORDER_COLOR,
                            selectbackground=ACCENT_TEAL, selectforeground="white")
@@ -568,12 +586,12 @@ output_entry = tk.Entry(output_frame, textvariable=output_path, font=("Segoe UI"
                        highlightbackground=BORDER_COLOR)
 output_entry.pack(fill=tk.X, ipady=12, padx=2)
 
-# Start Button
+# Start Button - Fixed padding for proper display
 start_btn = tk.Button(main_container, text="▶️  START PROCESSING", command=run_processing,
-                     font=("Segoe UI", 14, "bold"), bg=ACCENT_GREEN, fg="white",
+                     font=("Segoe UI", 13, "bold"), bg=ACCENT_GREEN, fg="white",
                      activebackground="#059669", relief=tk.FLAT, cursor="hand2",
-                     padx=40, pady=18, borderwidth=0)
-start_btn.pack(pady=18)
+                     padx=40, pady=16, borderwidth=0, height=2)
+start_btn.pack(pady=(20, 18))
 
 # Progress Bar
 progress_frame = tk.Frame(main_container, bg=BG_DARK)
@@ -594,7 +612,7 @@ log_frame.pack(fill=tk.BOTH, expand=True)
 log_scrollbar = tk.Scrollbar(log_frame, bg=BG_INPUT)
 log_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
 
-log_box = tk.Text(log_frame, height=8, font=("Consolas", 9), bg=BG_INPUT, 
+log_box = tk.Text(log_frame, height=10, font=("Consolas", 9), bg=BG_INPUT, 
                  fg="#6ee7b7", relief=tk.FLAT, bd=0, wrap=tk.WORD, 
                  yscrollcommand=log_scrollbar.set, insertbackground="white")
 log_box.pack(fill=tk.BOTH, expand=True)

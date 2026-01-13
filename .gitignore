@@ -1,4 +1,3 @@
-# Google Cloud Shell system folders
 .cache/
 .config/
 .gemini/
@@ -8,12 +7,10 @@
 .npm/
 .rustup/
 
-# Python/PyInstaller junk
 build/
 dist/
 __pycache__/
 *.spec
 *.pyc
 
-# OS files
 .DS_Store
