@@ -1,5 +1,4 @@
-# Start Button - More space above and below
-start_btn_container = tk.Frame(mainimport openpyxl
+import openpyxl
 from openpyxl.drawing.image import Image as XLImage
 import tkinter as tk
 from tkinter import filedialog, ttk, messagebox
@@ -8,6 +7,7 @@ import winsound
 from copy import deepcopy
 import shutil
 import json
+import sys
 
 """
 ╔══════════════════════════════════════════════════════════════════╗
@@ -366,12 +366,12 @@ def update_mode_ui():
         grade_frame.pack(fill=tk.BOTH, expand=True, pady=(0, 10), before=office_frame)
         calendar_frame.pack(fill=tk.X, pady=(0, 10), before=office_frame)
 
-# ------------------- ENHANCED DARK UI V6.1 -------------------
+# --------------------------- V6.2 ----------------------------
 
 root = tk.Tk()
 root.title("Cube Data Processor")
-root.geometry("1000x950")  # Bigger window
-root.minsize(950, 900)  # Minimum size to prevent crushing
+root.geometry("1000x900")
+root.minsize(950, 850)
 root.configure(bg="#0f0f0f")
 
 try:
@@ -380,7 +380,6 @@ except:
     pass
 
 # Load saved settings
-import sys
 settings, saved_grade_files = load_settings()
 
 grade_files = []
@@ -470,23 +469,32 @@ github_label.bind("<Button-1>", lambda e: os.system("start https://github.com/Sa
 
 # Main Container with Scrollbar
 main_canvas = tk.Canvas(root, bg=BG_DARK, highlightthickness=0)
-main_scrollbar = tk.Scrollbar(root, orient="vertical", command=main_canvas.yview)
-main_container = tk.Frame(main_canvas, bg=BG_DARK)
+main_scrollbar = tk.Scrollbar(root, orient="vertical", command=main_canvas.yview, bg=BG_CARD, troughcolor=BG_DARK)
+scrollable_frame = tk.Frame(main_canvas, bg=BG_DARK)
 
 main_scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
-main_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True, padx=25, pady=20)
-main_canvas.create_window((0, 0), window=main_container, anchor="nw")
+main_canvas.pack(side=tk.LEFT, fill=tk.BOTH, expand=True)
+canvas_frame = main_canvas.create_window((0, 0), window=scrollable_frame, anchor="nw")
 
-def on_frame_configure(event):
+def configure_scroll_region(event):
     main_canvas.configure(scrollregion=main_canvas.bbox("all"))
 
-main_container.bind("<Configure>", on_frame_configure)
+def configure_canvas_width(event):
+    canvas_width = event.width
+    main_canvas.itemconfig(canvas_frame, width=canvas_width)
+
+scrollable_frame.bind("<Configure>", configure_scroll_region)
+main_canvas.bind("<Configure>", configure_canvas_width)
 
 # Mouse wheel scrolling
 def on_mousewheel(event):
     main_canvas.yview_scroll(int(-1*(event.delta/120)), "units")
 
 main_canvas.bind_all("<MouseWheel>", on_mousewheel)
+
+# Main container frame (inside scrollable area)
+main_container = tk.Frame(scrollable_frame, bg=BG_DARK)
+main_container.pack(fill=tk.BOTH, expand=True, padx=25, pady=20)
 
 # Processing Mode Selection
 mode_selection_frame = tk.LabelFrame(main_container, text="  ⚙️ PROCESSING MODE  ", 
@@ -586,11 +594,11 @@ output_entry = tk.Entry(output_frame, textvariable=output_path, font=("Segoe UI"
                        highlightbackground=BORDER_COLOR)
 output_entry.pack(fill=tk.X, ipady=12, padx=2)
 
-# Start Button - Fixed padding for proper display
+# Start Button - Fixed with proper height
 start_btn = tk.Button(main_container, text="▶️  START PROCESSING", command=run_processing,
                      font=("Segoe UI", 13, "bold"), bg=ACCENT_GREEN, fg="white",
                      activebackground="#059669", relief=tk.FLAT, cursor="hand2",
-                     padx=40, pady=16, borderwidth=0, height=2)
+                     padx=40, pady=18, borderwidth=0, height=2)
 start_btn.pack(pady=(20, 18))
 
 # Progress Bar
