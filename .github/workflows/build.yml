@@ -3,7 +3,7 @@ name: Build and Release Windows EXE
 on:
   push:
     tags:
-      - 'v*' 
+      - 'v*'
 
 jobs:
   build:
@@ -22,22 +22,19 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install pyinstaller openpyxl Pillow
+          pip install pyinstaller openpyxl customtkinter Pillow
 
       - name: Build EXE with PyInstaller
-        # Updated with icon, logo, and friend's hidden import suggestions
         run: |
           pyinstaller --onefile --noconsole `
-          --name "Cube-${{ github.ref_name }}" `
+          --name "Cube-Processor-${{ github.ref_name }}" `
           --icon="icon.ico" `
-          --add-data "segoeui.ttf;." `
           --add-data "logo.png;." `
           --add-data "icon.ico;." `
-          --hidden-import=openpyxl `
           --hidden-import=openpyxl.cell `
           --hidden-import=openpyxl.styles `
           --hidden-import=openpyxl.drawing.image `
-          --hidden-import=PIL `
+          --collect-all customtkinter `
           --collect-all openpyxl `
           Cube.py
 
@@ -47,6 +44,7 @@ jobs:
           files: dist/*.exe
           tag_name: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
+          body: "Automated Build for Cube Data Processor ${{ github.ref_name }}"
           draft: false
           prerelease: false
         env:
